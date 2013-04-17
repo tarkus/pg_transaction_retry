@@ -9,9 +9,7 @@ group :test do
   
   gem 'simplecov', :require => false
 
-  gem 'mysql2'
   gem 'pg'
-  gem 'sqlite3'
 end
 
 group :development do

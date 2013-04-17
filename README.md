@@ -1,6 +1,6 @@
-# transaction_retry
+# pg_transaction_retry
 
-Retries database transaction on deadlock and transaction serialization errors. Supports MySQL, PostgreSQL, and SQLite.
+Retries database transaction on deadlock and transaction serialization errors. Supports PostgreSQL.
 
 ## Example
 
@@ -26,21 +26,10 @@ __after__ connecting to the database.
 
 ## Database deadlock and serialization errors that are retried
 
-#### MySQL
-
- * Deadlock found when trying to get lock
- * Lock wait timeout exceeded
-
 #### PostgreSQL
 
  * deadlock detected
  * could not serialize access
-
-#### SQLite
-
- * The database file is locked
- * A table in the database is locked
- * Database lock protocol error
 
 ## Configuration
 
@@ -51,7 +40,7 @@ You can optionally configure transaction_retry gem in your config/initializers/t
 
 ## Features
 
- * Supports MySQL, PostgreSQL, and SQLite (as long as you are using new drivers mysql2, pg, sqlite3).
+ * Supports PostgreSQL (as long as you are using pg).
  * Exponential sleep times between retries (0, 1, 2, 4 seconds).
  * Logs every retry as a warning.
  * Intentionally does not retry nested transactions.
@@ -69,11 +58,9 @@ This gem was initially developed for and successfully works in production at [Ko
 
 ## Running tests
 
-Run tests on the selected database (mysql2 by default):
+Run tests on the selected database:
 
-    db=mysql2 bundle exec rake test
     db=postgresql bundle exec rake test
-    db=sqlite3 bundle exec rake test
 
 Run tests on all supported databases:
 
